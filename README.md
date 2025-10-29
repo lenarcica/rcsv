@@ -4,16 +4,27 @@
 
  -- GNU Public License: this is open source, but you should probably write your own
 
+## Framework for building customized readers for multi-format csv/psvs.
+
   Some data feeds combine multiple feeds together and produce a single file with
-records of different schemas mixed together. Depending on the type of data 
-submitted in a CSV|PSV|Etc document file,  identifiers may be given in a 
-translation document that gives users the ability to  separate, line by line, 
-the file into a number of pre-defined formats. If this can be achieved, other
-algorithmic data processing might be usable.  The goal is to achieve compression,
+records of different schemas mixed together. Documenting these schema issues 
+can be difficult and lead to ad-hoc and hard to replicate code.  Here we allow
+a user to document the variety of line-schema in a "c0.psv" format configuration
+table.  Rust Procedural macros, at compile time, read the configuration files,
+and generate suitable data structures to power a read from csv to parquet format.
+As needed, this code can be adjusted so that subtle adjustments can be made in a
+way that chained bash scripts/python may not be able to adapt easily.
+
+While some instances (cloud/prem) used to handle these files may have large-ram/large
+thread systems, others will have less performance, and these ingestion scripts
+may need to be run over an hour or so for typical nightly 2B line files.
+One goal of this is to achieve compression,
 in the form of a columnar parquet table, which can reduce data size and prepare
 the file to be processed into a HIVE format (where additional sorting, record 
-reconcilation, etc may be performed).
-
+reconcilation, etc may be performed).  While it may take an hour to open CSVs,
+ the parquet files can typically be read in seconds, and then resorted to and
+ preprocessed into even more tuned datastructures on disk.
+ 
   We do observe that, through bypassing the many warning flags, DuckDB can be
  used on this file and achieve mostly adequate performance in speed and compression.
 
@@ -149,5 +160,6 @@ a number of the pre-defined column formats.  Basics can be inferred:
    ability to write to OpenZL in batches.
 
   
+
 
 
