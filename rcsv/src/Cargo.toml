@@ -1,0 +1,24 @@
+[package]
+name = "rcsv"
+version = "0.1.0"
+edition = "2024"
+authors = ["Alan Lenarcic <lenarcic@post.harvard.edu"]
+description = "A Procedural Macro Test for large parallel alternate type file reading to arrow."
+license = "MIT"
+repository = "https://github.com/lenarcic/rcsv"
+
+[dependencies]
+lib_rcsv = { path = "./lib_rcsv" }
+syn = { version = "2.0", features = ["full"] }
+quote = "1.0.41"
+proc-macro2 = "1.0.101"
+##csv = "1.0" # Add the csv crate
+##arrow-select = "53.2.0"
+arrow = {version = "57.0.0"} 
+arrow-schema = "57.0.0"
+arrow-ipc = {version = "57.0.0", features = ["zstd"]} 
+##arrow-schema = "53.2.0"
+macro_const = "0.1.0"
+zstd = "0.13.3"
+parquet = {version="57.0.0", features=["zstd"]}
+##sprintf = "0.3.1"
