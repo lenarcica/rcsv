@@ -119,8 +119,8 @@ a number of the pre-defined column formats.  Basics can be inferred:
  by the "!" operator, and often written with the "macro_rules!" operator.
 
  Meanwhile "procedural macros" can be used to write an entire library of 
- code before compiling a main practice.  As suce, the "procedure" exists
- in an entirely separate package.  In this case "lib_ptc/src/lib.rs" is a
+ code before compiling a main part of the package.  As suce, the "procedure" exists
+ in an entirely separate package.  In this case "rcsv/lib_rcsv/src/lib.rs" is a
  standalone Rust library that is only compiled in conjunction to a target
  library, like the example in our rcsv/src/main.rs file.
 
@@ -160,6 +160,7 @@ a number of the pre-defined column formats.  Basics can be inferred:
    ability to write to OpenZL in batches.
 
   
+
 
 
 
