@@ -4,6 +4,11 @@
 
  -- GNU Public License: this is open source, but you should probably write your own
 
+## Package elements
+  1. ```rcsv/rcsv``` folder: Rust executable install and instructions
+  2. ```rcsv/test_src``` folder: Example "configuration instruction file"
+  3. ```rcsv/scripts``` Python scripts to generate fake test data read output.
+
 ## Framework for building customized readers for multi-format csv/psvs.
 
   Some data feeds combine multiple feeds together and produce a single file with
@@ -13,7 +18,7 @@ a user to specify the variety of schema, in a table-oriented "c0.psv" format con
 file.  Rust Procedural macros, at compile time, read the configuration files,
 and generate suitable reader structures to power a an extract-from-csv-to-parquet operation.
 As needed, this code can be adjusted to make subtle adjustments, that may be difficult to 
-achieve in chaining fixed utilities together with scripts or python.
+achieve in chaining fixed utilities together with scripts or Python.
 
 The optimal scheme for extracting CSVs can be system dependent.
 Some Cloud/On-prem instances can handle files with access to sizable system ram/and 
@@ -55,7 +60,7 @@ manually editted at the line-level to compete against pre-compiled methods.
  which would be acceptable for a 2B line file to be completed in 1-2 Hours.  This would have
 to deal with known issues affecting data/hard-drive speeds on cloud platforms.
 
-# The lib-ptc input and output files.
+# The ```rcsv/lib-rcsv``` "procedural-macro input" library.
    The problem with multiple programming languages/data-structures/
  operating-systems/packages is that the types of every column of data
  in a CSV may be described by a variety of particular names.  
@@ -164,6 +169,7 @@ a number of the pre-defined column formats.  Basics can be inferred:
    ability to write to OpenZL in batches.
 
   
+
 
 
 
