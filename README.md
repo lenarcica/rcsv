@@ -30,16 +30,18 @@ reconcilation, etc may be performed).  While it may take an hour to open CSVs,
   We do observe that, through bypassing the many warning flags, DuckDB can be
  used on this file and achieve mostly adequate performance in speed and compression.
 
-  This package is designed to investigate and emonstrate the feasibility of a Rust-
+  This package is investigates the feasibility and flexibility of a Rust-
 based solution. We test whether Rust gives adequate tools, such that, 
-using pre-compliationand so-called "procedural macros", it can built data structures and read a 
-sequenced files, depositing the result in compressed parquet-style files, using
-every core on the platform.  
+using pre-compliationand so-called "procedural macros", it can built data structures 
+which have sufficient power to parse large files, depositing the result in 
+compressed parquet format, and use  every core on the platform. 
+
   This can be challenging since C++ based programms
 like DuckDb already implement very performant technology for CSV datastructures.
 We observe that duckdb can be forced (with much effort) to deal with these
 differentially suplied CSV files and deliver rather effiicient CSV readers,
 despite every warning flags' insistence to the contrary.
+
   That said, in future extractions, it may be that a universal, pre-compiled,
 infrastructure, the line-by-line reader might be essential.  To support this,
 this library example demonstrates Rust-based competitive code that can be
@@ -162,6 +164,7 @@ a number of the pre-defined column formats.  Basics can be inferred:
    ability to write to OpenZL in batches.
 
   
+
 
 
 
