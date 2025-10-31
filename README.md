@@ -7,23 +7,25 @@
 ## Framework for building customized readers for multi-format csv/psvs.
 
   Some data feeds combine multiple feeds together and produce a single file with
-records of different schemas mixed together. Documenting these schema issues 
-can be difficult and lead to ad-hoc and hard to replicate code.  Here we allow
-a user to document the variety of line-schema in a "c0.psv" format configuration
-table.  Rust Procedural macros, at compile time, read the configuration files,
-and generate suitable data structures to power a read from csv to parquet format.
-As needed, this code can be adjusted so that subtle adjustments can be made in a
-way that chained bash scripts/python may not be able to adapt easily.
+records of different schemas mixed together. Documenting several-layer schema issues 
+can be difficult and lead to ad-hoc and hard-to-replicate code.  Here we allow
+a user to specify the variety of schema, in a table-oriented "c0.psv" format configuration
+file.  Rust Procedural macros, at compile time, read the configuration files,
+and generate suitable reader structures to power a an extract-from-csv-to-parquet operation.
+As needed, this code can be adjusted to make subtle adjustments, that may be difficult to 
+achieve in chaining fixed utilities together with scripts or python.
 
-While some instances (cloud/prem) used to handle these files may have large-ram/large
-thread systems, others will have less performance, and these ingestion scripts
-may need to be run over an hour or so for typical nightly 2B line files.
-One goal of this is to achieve compression,
+The optimal scheme for extracting CSVs can be system dependent.
+Some Cloud/On-prem instances can handle files with access to sizable system ram/and 
+support heavy multithreading, other users may face a default with significantly 
+less performance, memory, disk-access, and local threads.
+A typical use-case we research is a typically nightly size 2B line files.
+One goal of this is to achieve compression on server instances, 
 in the form of a columnar parquet table, which can reduce data size and prepare
 the file to be processed into a HIVE format (where additional sorting, record 
 reconcilation, etc may be performed).  While it may take an hour to open CSVs,
- the parquet files can typically be read in seconds, and then resorted to and
- preprocessed into even more tuned datastructures on disk.
+ the resulting parquet files can typically be read in seconds, and then-after be
+ resorted to and preprocessed to achieve even-more tuned datastructures on disk.
  
   We do observe that, through bypassing the many warning flags, DuckDB can be
  used on this file and achieve mostly adequate performance in speed and compression.
@@ -160,6 +162,7 @@ a number of the pre-defined column formats.  Basics can be inferred:
    ability to write to OpenZL in batches.
 
   
+
 
 
 
